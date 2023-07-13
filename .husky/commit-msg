@@ -3,4 +3,4 @@
 
 npx yarn lint
 npx yarn test 
-npx yarn commitlint --edit  
+npx yarn commitlint --edit 
