@@ -12,7 +12,7 @@ export const Button = ({
 }: ButtonProps) => {
   const sizes: { [key in ButtonSizesType]: React.CSSProperties } = {
     small: {
-      fontSize: '0.675rem',
+      fontSize: '0.6751rem',
       padding: '10px 16px',
     },
     medium: {
