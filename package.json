@@ -4,7 +4,7 @@
   "description": "Layout guidelines for your frontend projects. (Inspired by Figma)",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
-  "repository": "https://github.com/chocoscoding/layout-greed",
+  "repository": "https://github.com/chocoscoding/layout-greednp",
   "author": "chocoscoding@gmail.com",
   "license": "MIT",
   "private": false,
