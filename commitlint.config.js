@@ -34,6 +34,9 @@ module.exports = {
     ],
   },
   prompt: {
+    settings: {
+      enableMultiScopes: true,
+    },
     questions: {
       type: {
         description: "Select the type of change that you're committing",
