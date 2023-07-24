@@ -18,10 +18,7 @@ const Template: ComponentStory<typeof Layout> = (args) => <Layout {...args} />;
 
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
-  primary: true,
-  label: 'button',
-};
+Primary.args = {};
 
 Primary.parameters = {
   layout: 'fullscreen',

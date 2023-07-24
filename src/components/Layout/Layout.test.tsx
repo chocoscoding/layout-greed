@@ -5,7 +5,7 @@ import { Layout } from './Layout';
 
 describe('Button', () => {
   test('check if element exists', async () => {
-    render(<Layout primary label="Click me" />);
+    render(<Layout backgroundColor="#fff" />);
 
     const element = screen.getByText('Click me');
 
