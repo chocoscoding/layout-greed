@@ -1,6 +1,6 @@
-export type ButtonSizesType = 'small' | 'medium' | 'large';
+export type LayoutSizesType = 'small' | 'medium' | 'large';
 
-export interface ButtonProps {
+export interface LayoutProps {
   /**
    * Is this the principal call to action on the page?
    */
@@ -15,11 +15,11 @@ export interface ButtonProps {
    */
   color?: string;
   /**
-   * How large should the button be?
+   * How large should the Layout be?
    */
-  size?: ButtonSizesType;
+  size?: LayoutSizesType;
   /**
-   * Button contents
+   * Layout contents
    */
   label: string;
   /**
