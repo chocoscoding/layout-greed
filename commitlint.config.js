@@ -18,7 +18,7 @@ module.exports = {
         'build',
         'chore',
         'ci',
-        'construction',
+        'constr',
         'docs',
         'feat',
         'fix',
