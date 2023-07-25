@@ -24,5 +24,5 @@ export interface SecondarySettings {
   columnsType: ColumnType;
 }
 export interface LayoutProps {
-  backgroundColor: string;
+  color?: string;
 }

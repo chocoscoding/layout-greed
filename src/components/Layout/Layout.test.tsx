@@ -1,13 +1,13 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 
 import { Layout } from './Layout';
 
-describe('Button', () => {
+describe('Layout', () => {
   test('check if element exists', async () => {
-    render(<Layout backgroundColor="#fff" />);
+    render(<Layout color="#fff" />);
 
-    const element = screen.getByText('Click me');
+    const element = screen.getByTestId('layout');
 
     expect(element).toBeInTheDocument();
   });

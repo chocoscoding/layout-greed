@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from 'react';
 
 import type {
@@ -8,18 +9,18 @@ import type {
 } from './Layout.types';
 import Grid from '../Grid/Grid';
 
-export const Layout = ({ backgroundColor, ...props }: LayoutProps) => {
+export const Layout = ({ color, ...props }: LayoutProps) => {
   const styles: React.CSSProperties = {
     display: 'flex',
     width: '100vw',
     height: '100vh',
-    backgroundColor,
+    backgroundColor: 'transparent',
     margin: '0',
     overflow: 'hidden',
     position: 'absolute',
     top: '0px',
     left: '0px',
-    border: '10px solid pink',
+    outline: '10px solid pink',
   };
 
   const [layoutType, setLayoutType] = useState<LayoutTypesType>('grid');
@@ -48,8 +49,8 @@ export const Layout = ({ backgroundColor, ...props }: LayoutProps) => {
     setSecondarySettings((prevState) => ({ ...prevState, [name]: value }));
   };
   return (
-    <div style={styles} {...props}>
-      <Grid />
+    <div style={styles} {...props} data-testid="layout">
+      <Grid color={color} size={mainSettings.size} />
     </div>
   );
 };

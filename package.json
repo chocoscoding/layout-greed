@@ -1,6 +1,6 @@
 {
   "name": "layout-greed",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Layout guidelines for your frontend projects. (Inspired by Figma)",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

@@ -18,6 +18,7 @@ module.exports = {
         'build',
         'chore',
         'ci',
+        'construction',
         'docs',
         'feat',
         'fix',
@@ -82,6 +83,12 @@ module.exports = {
               'Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)',
             title: 'Continuous Integrations',
             emoji: '⚙️',
+          },
+          constr: {
+            description:
+              'Continuoud of building a current feature or component',
+            title: 'Continous construction/creation',
+            emoji: '🏗️',
           },
           chore: {
             description: "Other changes that don't modify src or test files",
