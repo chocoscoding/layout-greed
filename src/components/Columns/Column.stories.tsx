@@ -1,24 +1,25 @@
 import { ComponentStory, Meta } from '@storybook/react';
 
-import Grid from './Grid';
+import Column from './Column';
 import StoryLayout from '../StoryLayout';
 
 const withLayout = (Story: any) => <StoryLayout>{Story()}</StoryLayout>;
 export default {
-  title: 'Components/Grid',
-  component: Grid,
+  title: 'Components/Column',
+  component: Column,
 
   argTypes: {
     color: { control: 'color' },
-    size: { control: 'number', min: 1, max: 2000, step: 1 },
+    count: { control: 'number', min: 10, max: 2000, step: 1 },
   },
   decorators: [withLayout],
-} as Meta<typeof Grid>;
+} as Meta<typeof Column>;
 
-const Template: ComponentStory<typeof Grid> = (args) => <Grid {...args} />;
+const Template: ComponentStory<typeof Column> = (args) => <Column {...args} />;
 export const Main = Template.bind({});
 Main.args = {
   color: '#ff00003b',
+  count: 10,
 };
 
 Main.parameters = {
