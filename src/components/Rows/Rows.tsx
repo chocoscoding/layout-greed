@@ -30,17 +30,15 @@ const Rows: FC<RowsProps> = ({
   };
   const firstChildStyle: CSSProperties = {
     ...(rowsType === 'right' ? { marginRight: `${offset}px` } : {}),
-    ...(rowsType === 'stretch' || rowsType === 'left'
-      ? { marginLeft: `${offset}px` }
-      : {}),
+    ...(rowsType === 'left' ? { marginLeft: `${offset}px` } : {}),
   };
   const lastChildStyle: CSSProperties = {
-    ...(rowsType === 'stretch' ? { marginRight: `${offset}px` } : {}),
+    // ...(rowsType === 'stretch' ? { marginRight: `${offset}px` } : {}),
   };
   const oneRowsStyle: CSSProperties = {
     width: `${rowsType === 'stretch' ? '100%' : `${width}px`}`,
     ...(rowsType === 'stretch' && { flex: 1 }),
-    border: '1px solid red',
+    border: 'none',
     height: '100%',
     backgroundColor: color,
     ...(rowsType === 'stretch' ? {} : { flexShrink: 0 }),

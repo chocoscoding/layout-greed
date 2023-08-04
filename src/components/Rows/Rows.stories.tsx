@@ -10,7 +10,13 @@ export default {
 
   argTypes: {
     color: { control: 'color' },
-    count: { control: 'number', min: 10, max: 2000, step: 1 },
+    count: {
+      control: 'number',
+      min: 10,
+      max: 2000,
+      step: 10,
+      defaultValue: 10,
+    },
   },
   decorators: [withLayout],
 } as Meta<typeof Rows>;
@@ -19,7 +25,10 @@ const Template: ComponentStory<typeof Rows> = (args) => <Rows {...args} />;
 export const Main = Template.bind({});
 Main.args = {
   color: '#ff00003b',
+  rowsType: 'stretch',
   count: 10,
+  gutter: 10,
+  width: 50,
 };
 
 Main.parameters = {
