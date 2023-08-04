@@ -1,6 +1,6 @@
 import React, { CSSProperties, FC } from 'react';
 
-import { ColumnProps } from './Column.type';
+import { ColumnProps, FlexDirection } from './Column.type';
 
 const Column: FC<ColumnProps> = ({
   columnType = 'stretch',
@@ -9,6 +9,12 @@ const Column: FC<ColumnProps> = ({
   width,
   color = 'ff00003b',
 }) => {
+  const flexDir: Record<typeof columnType, FlexDirection> = {
+    stretch: 'column',
+    left: 'column',
+    right: 'column-reverse',
+    center: 'column',
+  };
   const mainStyle: CSSProperties = {
     outline: 'none',
     outlineOffset: '-5px',
@@ -18,14 +24,17 @@ const Column: FC<ColumnProps> = ({
     minHeight: '100%',
     display: 'flex',
     columnGap: '30px',
-    justifyContent: 'right',
-    // ...(columnType !== 'stretch' ? { justifyContent: columnType } : {}),
+    flexDirection: flexDir[columnType],
+    ...(columnType === 'center' ? { justifyContent: 'center' } : {}),
+  };
+  const firstChildStyle: CSSProperties = {
+    ...(columnType === 'right' ? { marginRight: `${offset}px` } : {}),
     ...(columnType === 'center' || columnType === 'left'
-      ? { paddingLeft: `${offset}px` }
+      ? { marginLeft: `${offset}px` }
       : {}),
-    ...(columnType === 'center' || columnType === 'right'
-      ? { paddingRight: `${offset}px` }
-      : {}),
+  };
+  const lastChildStyle: CSSProperties = {
+    ...(columnType === 'center' ? { marginRight: `${offset}px` } : {}),
   };
   const oneColumnStyle: CSSProperties = {
     width: `${columnType === 'stretch' ? '100%' : `${width}px`}`,
@@ -39,9 +48,21 @@ const Column: FC<ColumnProps> = ({
     <div style={mainStyle} data-testid="columnCont">
       {Array(count)
         .fill(0)
-        .map((ele, i) => (
-          <div style={oneColumnStyle} key={`columnChild-${i}`}></div>
-        ))}
+        .map((ele, i) => {
+          if (i === 0)
+            return (
+              <div
+                style={{ ...oneColumnStyle, ...firstChildStyle }}
+                key={`columnChild-${i}`}></div>
+            );
+          if (i === Array(count).length)
+            return (
+              <div
+                style={{ ...oneColumnStyle, ...lastChildStyle }}
+                key={`columnChild-${i}`}></div>
+            );
+          return <div style={oneColumnStyle} key={`columnChild-${i}`}></div>;
+        })}
     </div>
   );
 };
