@@ -32,9 +32,7 @@ const Columns: FC<ColumnsProps> = ({
     ...(columnsType === 'right' ? { marginRight: `${offset}px` } : {}),
     ...(columnsType === 'left' ? { marginLeft: `${offset}px` } : {}),
   };
-  const lastChildStyle: CSSProperties = {
-    // ...(columnsType === 'stretch' ? { marginRight: `${offset}px` } : {}),
-  };
+  const lastChildStyle: CSSProperties = {};
   const oneColumnStyle: CSSProperties = {
     width: `${columnsType === 'stretch' ? '100%' : `${width}px`}`,
     ...(columnsType === 'stretch' && { flex: 1 }),
