@@ -10,6 +10,12 @@ const Grid: FC<GridProps> = ({ size, color = 'ff00003b' }) => {
   const gridVerticalCont: CSSProperties = {
     display: 'flex',
   };
+  const gridHorizontalCont: CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    position: 'absolute',
+    top: '0px',
+  };
   const gridVertical: CSSProperties = {
     height: '100vh',
     width: '1px',
@@ -17,12 +23,6 @@ const Grid: FC<GridProps> = ({ size, color = 'ff00003b' }) => {
     backgroundColor: color,
     border: 'none',
     display: 'block',
-  };
-  const gridHorizontalCont: CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    position: 'absolute',
-    top: '0px',
   };
   const gridHorizontal: CSSProperties = {
     height: '1px',

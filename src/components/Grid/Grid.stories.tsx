@@ -18,7 +18,8 @@ export default {
 const Template: ComponentStory<typeof Grid> = (args) => <Grid {...args} />;
 export const Main = Template.bind({});
 Main.args = {
-  color: '#ff00003b',
+  color: 'rgba(250, 15, 15, 0.2)',
+  size: 10,
 };
 
 Main.parameters = {

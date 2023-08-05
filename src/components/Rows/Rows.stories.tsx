@@ -24,7 +24,7 @@ export default {
 const Template: ComponentStory<typeof Rows> = (args) => <Rows {...args} />;
 export const Main = Template.bind({});
 Main.args = {
-  color: '#ff00003b',
+  color: 'rgba(250, 15, 15, 0.2)',
   rowsType: 'stretch',
   count: 10,
   gutter: 10,
