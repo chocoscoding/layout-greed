@@ -12,8 +12,8 @@ const Columns: FC<ColumnsProps> = ({
 }) => {
   const flexDir: Record<typeof columnsType, FlexDirection> = {
     stretch: 'column',
-    left: 'column',
-    right: 'column-reverse',
+    top: 'column',
+    bottom: 'column-reverse',
     center: 'column',
   };
   const mainStyle: CSSProperties = {
@@ -22,22 +22,21 @@ const Columns: FC<ColumnsProps> = ({
     position: 'relative',
     pointerEvents: 'none',
     ...(columnsType === 'stretch' ? { width: '100%' } : { minWidth: '100%' }),
-    minHeight: '100%',
+    minWidth: '100%',
     display: 'flex',
-    columnGap: `${gutter}px`,
+    rowGap: `${gutter}px`,
     flexDirection: flexDir[columnsType],
     ...(columnsType === 'center' ? { justifyContent: 'center' } : {}),
   };
   const firstChildStyle: CSSProperties = {
-    ...(columnsType === 'right' ? { marginRight: `${offset}px` } : {}),
-    ...(columnsType === 'left' ? { marginLeft: `${offset}px` } : {}),
+    ...(columnsType === 'top' ? { marginTop: `${offset}px` } : {}),
+    ...(columnsType === 'bottom' ? { marginBottom: `${offset}px` } : {}),
   };
-  const lastChildStyle: CSSProperties = {};
   const oneColumnStyle: CSSProperties = {
-    width: `${columnsType === 'stretch' ? '100%' : `${width}px`}`,
+    height: `${columnsType === 'stretch' ? '100%' : `${width}px`}`,
     ...(columnsType === 'stretch' && { flex: 1 }),
     border: 'none',
-    height: '100%',
+    width: '100%',
     backgroundColor: color,
     ...(columnsType === 'stretch' ? {} : { flexShrink: 0 }),
   };
@@ -50,12 +49,6 @@ const Columns: FC<ColumnsProps> = ({
             return (
               <div
                 style={{ ...oneColumnStyle, ...firstChildStyle }}
-                key={`columnsChild-${i}`}></div>
-            );
-          if (i === Array(count).length - 1)
-            return (
-              <div
-                style={{ ...oneColumnStyle, ...lastChildStyle }}
                 key={`columnsChild-${i}`}></div>
             );
           return <div style={oneColumnStyle} key={`columnsChild-${i}`}></div>;

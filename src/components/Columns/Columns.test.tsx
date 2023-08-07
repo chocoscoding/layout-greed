@@ -22,14 +22,14 @@ describe('columns', () => {
     //expect rowChild to have styles of backgroundColor '#2200ff'
     expect(columnsChild).toHaveStyle({ backgroundColor: '#2200ff' });
   });
-  test('direction left correct', () => {
-    render(<Columns columnsType={'left'} />);
+  test('direction top correct', () => {
+    render(<Columns columnsType={'top'} />);
     const mainContainer = screen.getByTestId('columnsCont');
     expect(mainContainer).toBeInTheDocument();
     expect(mainContainer).toHaveStyle({ flexDirection: 'column' });
   });
-  test('direction right correct', () => {
-    render(<Columns columnsType={'right'} />);
+  test('direction bottom correct', () => {
+    render(<Columns columnsType={'bottom'} />);
     const mainContainer = screen.getByTestId('columnsCont');
     expect(mainContainer).toBeInTheDocument();
     expect(mainContainer).toHaveStyle({ flexDirection: 'column-reverse' });
@@ -40,8 +40,8 @@ describe('columns', () => {
     const columnsLastChild = screen.getByTestId('columnsCont').lastChild;
     expect(columnsFirstChild).toBeInTheDocument();
     expect(columnsLastChild).toBeInTheDocument();
-    expect(columnsFirstChild).not.toHaveStyle({ marginLeft: '10px' });
-    expect(columnsLastChild).not.toHaveStyle({ marginRight: '10px' });
+    expect(columnsFirstChild).not.toHaveStyle({ marginTop: '10px' });
+    expect(columnsLastChild).not.toHaveStyle({ marginBottom: '10px' });
   });
   test('no offset on stretch', () => {
     render(<Columns columnsType={'stretch'} offset={10} />);
@@ -49,31 +49,31 @@ describe('columns', () => {
     const columnsLastChild = screen.getByTestId('columnsCont').lastChild;
     expect(columnsFirstChild).toBeInTheDocument();
     expect(columnsLastChild).toBeInTheDocument();
-    expect(columnsFirstChild).not.toHaveStyle({ marginLeft: '10px' });
-    expect(columnsLastChild).not.toHaveStyle({ marginRight: '10px' });
+    expect(columnsFirstChild).not.toHaveStyle({ marginTop: '10px' });
+    expect(columnsLastChild).not.toHaveStyle({ marginBottom: '10px' });
   });
-  test('offset on left', () => {
-    render(<Columns columnsType={'right'} offset={10} />);
+  test('offset on bottom', () => {
+    render(<Columns columnsType={'bottom'} offset={10} />);
     const columnsChild = screen.getByTestId('columnsCont').firstChild;
 
-    expect(columnsChild).toHaveStyle({ marginRight: '10px' });
+    expect(columnsChild).toHaveStyle({ marginBottom: '10px' });
   });
-  test('offset on right', () => {
-    render(<Columns columnsType={'left'} offset={10} />);
+  test('offset on top', () => {
+    render(<Columns columnsType={'top'} offset={10} />);
     const columnsChild = screen.getByTestId('columnsCont').firstChild;
 
-    expect(columnsChild).toHaveStyle({ marginLeft: '10px' });
+    expect(columnsChild).toHaveStyle({ marginTop: '10px' });
   });
-  test('proper width', () => {
+  test('proper height', () => {
     render(<Columns columnsType={'center'} width={200} />);
     const columnsChild = screen.getByTestId('columnsCont').firstChild;
 
-    expect(columnsChild).toHaveStyle({ width: '200px' });
+    expect(columnsChild).toHaveStyle({ height: '200px' });
   });
   test('proper gutter', () => {
     render(<Columns columnsType={'stretch'} gutter={20} />);
     const mainContainer = screen.getByTestId('columnsCont');
     expect(mainContainer).toBeInTheDocument();
-    expect(mainContainer).toHaveStyle({ columnGap: '20px' });
+    expect(mainContainer).toHaveStyle({ rowGap: '20px' });
   });
 });

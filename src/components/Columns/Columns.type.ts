@@ -1,4 +1,3 @@
-export type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse';
 export interface ColumnsProps {
   //amount of columns
   count?: number;
@@ -11,5 +10,7 @@ export interface ColumnsProps {
   //offset from the edge
   offset?: number;
   //type of columns
-  columnsType: 'stretch' | 'left' | 'right' | 'center';
+  columnsType: 'stretch' | 'top' | 'bottom' | 'center';
 }
+
+export type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse';

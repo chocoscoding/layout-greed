@@ -1,3 +1,4 @@
+export type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse';
 export interface RowsProps {
   //amount of rows
   count?: number;
@@ -12,5 +13,3 @@ export interface RowsProps {
   //type of rows
   rowsType: 'stretch' | 'left' | 'right' | 'center';
 }
-
-export type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse';

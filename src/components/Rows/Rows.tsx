@@ -32,10 +32,7 @@ const Rows: FC<RowsProps> = ({
     ...(rowsType === 'right' ? { marginRight: `${offset}px` } : {}),
     ...(rowsType === 'left' ? { marginLeft: `${offset}px` } : {}),
   };
-  const lastChildStyle: CSSProperties = {
-    // ...(rowsType === 'stretch' ? { marginRight: `${offset}px` } : {}),
-  };
-  const oneRowsStyle: CSSProperties = {
+  const oneColumnStyle: CSSProperties = {
     width: `${rowsType === 'stretch' ? '100%' : `${width}px`}`,
     ...(rowsType === 'stretch' && { flex: 1 }),
     border: 'none',
@@ -51,16 +48,10 @@ const Rows: FC<RowsProps> = ({
           if (i === 0)
             return (
               <div
-                style={{ ...oneRowsStyle, ...firstChildStyle }}
+                style={{ ...oneColumnStyle, ...firstChildStyle }}
                 key={`rowsChild-${i}`}></div>
             );
-          if (i === Array(count).length - 1)
-            return (
-              <div
-                style={{ ...oneRowsStyle, ...lastChildStyle }}
-                key={`rowsChild-${i}`}></div>
-            );
-          return <div style={oneRowsStyle} key={`rowsChild-${i}`}></div>;
+          return <div style={oneColumnStyle} key={`rowsChild-${i}`}></div>;
         })}
     </div>
   );
