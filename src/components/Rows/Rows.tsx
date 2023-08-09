@@ -1,15 +1,17 @@
-import React, { CSSProperties, FC } from 'react';
+import React, { CSSProperties, useContext } from 'react';
 
-import { RowsProps, FlexDirection } from './Rows.type';
+import { FlexDirection } from './Rows.type';
+import LayoutContext from '../context/LayoutProvider';
 
-const Rows: FC<RowsProps> = ({
-  rowsType = 'stretch',
-  count = 10,
-  offset = 0,
-  width = 50,
-  gutter = 10,
-  color = 'ff00003b',
-}) => {
+const Rows = () => {
+  const {
+    rowsType = 'stretch',
+    count = 10,
+    offset = 0,
+    width = 50,
+    gutter = 10,
+    color = 'ff00003b',
+  } = useContext(LayoutContext);
   const flexDir: Record<typeof rowsType, FlexDirection> = {
     stretch: 'row',
     left: 'row',

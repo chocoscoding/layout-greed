@@ -1,8 +1,9 @@
-import { CSSProperties, FC, useEffect, useState } from 'react';
+import { CSSProperties, useContext, useEffect, useState } from 'react';
 
-import { GridProps } from './Grid.types';
+import LayoutContext from '../context/LayoutProvider';
 
-const Grid: FC<GridProps> = ({ size, color = 'ff00003b' }) => {
+const Grid = () => {
+  const { size, color } = useContext(LayoutContext);
   const mainStyle: CSSProperties = {
     position: 'relative',
     pointerEvents: 'none',

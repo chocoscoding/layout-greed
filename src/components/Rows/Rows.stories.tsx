@@ -1,7 +1,8 @@
-import { ComponentStory, Meta } from '@storybook/react';
+import { Meta, Story } from '@storybook/react';
 
 import Rows from './Rows';
 import StoryLayout from '../StoryLayout';
+import { LayoutProvider } from '../context/LayoutProvider';
 
 const withLayout = (Story: any) => <StoryLayout>{Story()}</StoryLayout>;
 export default {
@@ -10,6 +11,10 @@ export default {
 
   argTypes: {
     color: { control: 'color' },
+    rowsType: {
+      options: ['stretch', 'left', 'right', 'center'],
+      control: { type: 'radio' },
+    },
     count: {
       control: 'number',
       min: 10,
@@ -21,7 +26,11 @@ export default {
   decorators: [withLayout],
 } as Meta<typeof Rows>;
 
-const Template: ComponentStory<typeof Rows> = (args) => <Rows {...args} />;
+const Template: Story = (args: any) => (
+  <LayoutProvider testValue={{ ...args }}>
+    <Rows />
+  </LayoutProvider>
+);
 export const Main = Template.bind({});
 Main.args = {
   color: 'rgba(250, 15, 15, 0.2)',

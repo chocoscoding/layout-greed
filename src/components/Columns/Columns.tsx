@@ -1,15 +1,17 @@
-import React, { CSSProperties, FC } from 'react';
+import React, { CSSProperties, useContext } from 'react';
 
-import { ColumnsProps, FlexDirection } from './Columns.type';
+import { FlexDirection } from './Columns.type';
+import LayoutContext from '../context/LayoutProvider';
 
-const Columns: FC<ColumnsProps> = ({
-  columnsType = 'stretch',
-  count = 10,
-  offset = 0,
-  width = 50,
-  gutter = 10,
-  color = 'ff00003b',
-}) => {
+const Columns = () => {
+  const {
+    columnsType = 'stretch',
+    count = 10,
+    offset = 0,
+    width = 50,
+    gutter = 10,
+    color = 'ff00003b',
+  } = useContext(LayoutContext);
   const flexDir: Record<typeof columnsType, FlexDirection> = {
     stretch: 'column',
     top: 'column',

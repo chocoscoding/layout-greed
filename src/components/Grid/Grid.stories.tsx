@@ -1,7 +1,8 @@
-import { ComponentStory, Meta } from '@storybook/react';
+import { Meta, Story } from '@storybook/react';
 
 import Grid from './Grid';
 import StoryLayout from '../StoryLayout';
+import { LayoutProvider } from '../context/LayoutProvider';
 
 const withLayout = (Story: any) => <StoryLayout>{Story()}</StoryLayout>;
 export default {
@@ -15,7 +16,11 @@ export default {
   decorators: [withLayout],
 } as Meta<typeof Grid>;
 
-const Template: ComponentStory<typeof Grid> = (args) => <Grid {...args} />;
+const Template: Story = (args: any) => (
+  <LayoutProvider testValue={{ ...args }}>
+    <Grid />
+  </LayoutProvider>
+);
 export const Main = Template.bind({});
 Main.args = {
   color: 'rgba(250, 15, 15, 0.2)',

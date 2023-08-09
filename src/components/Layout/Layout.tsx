@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import type {
   LayoutProps,
@@ -7,7 +7,11 @@ import type {
   MainSettingsType,
   SecondarySettings,
 } from './Layout.types';
+import Columns from '../Columns/Columns';
+import Control from '../Control/Control';
 import Grid from '../Grid/Grid';
+import Rows from '../Rows/Rows';
+import LayoutContext, { LayoutProvider } from '../context/LayoutProvider';
 
 export const Layout = ({ color, ...props }: LayoutProps) => {
   const styles: React.CSSProperties = {
@@ -23,34 +27,20 @@ export const Layout = ({ color, ...props }: LayoutProps) => {
     outline: '10px solid pink',
   };
 
-  const [layoutType, setLayoutType] = useState<LayoutTypesType>('grid');
   const [mainSettings, setMainSettings] = useState<MainSettingsType>({
     size: 10,
     gutter: 10,
   });
-  const [secondarySettings, setSecondarySettings] = useState<SecondarySettings>(
-    {
-      count: 10,
-      offset: 0,
-      height: 0,
-      rowsType: 'Stretch',
-      columnsType: 'Stretch',
-    }
-  );
+  const { size } = useContext(LayoutContext);
 
-  //function for onchange of each element in mainSettings
-  const mainSettingsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setMainSettings((prevState) => ({ ...prevState, [name]: value }));
-  };
-  //function for onchange of each element in secondarySettings
-  const secondarySettingsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setSecondarySettings((prevState) => ({ ...prevState, [name]: value }));
-  };
   return (
-    <div style={styles} {...props} data-testid="layout">
-      <Grid color={color} size={mainSettings.size} />
-    </div>
+    <LayoutProvider>
+      <div style={styles} {...props} data-testid="layout">
+        <Grid />
+        <Rows />
+        <Columns />
+        <Control />
+      </div>
+    </LayoutProvider>
   );
 };
