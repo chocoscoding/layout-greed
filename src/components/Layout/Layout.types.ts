@@ -2,7 +2,7 @@ import { ChangeEvent } from 'react';
 
 export type LayoutTypesType = 'grid' | 'columns' | 'rows';
 
-export type RowsType = 'Top' | 'Bottom' | 'Center' | 'Stretch';
+export type rowstype = 'Top' | 'Bottom' | 'Center' | 'Stretch';
 export type ColumnType = 'Left' | 'Right' | 'Center' | 'Stretch';
 
 export type SecondarySettingsChange = (
@@ -20,8 +20,8 @@ export interface SecondarySettings {
   count: number;
   offset: number;
   height: number;
-  rowsType: RowsType;
-  columnsType: ColumnType;
+  rowstype: rowstype;
+  columnstype: ColumnType;
 }
 export interface LayoutProps {
   color?: string;

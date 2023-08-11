@@ -11,7 +11,7 @@ export default {
 
   argTypes: {
     color: { control: 'color' },
-    rowsType: {
+    columnstype: {
       options: ['stretch', 'top', 'bottom', 'center'],
       control: { type: 'radio' },
     },
@@ -34,10 +34,10 @@ const Template: Story = (args) => (
 export const Main = Template.bind({});
 Main.args = {
   color: 'rgba(250, 15, 15, 0.2)',
-  columnsType: 'stretch',
+  columnstype: 'stretch',
   count: 10,
   gutter: 10,
-  width: 50,
+  height: 50,
 };
 
 Main.parameters = {

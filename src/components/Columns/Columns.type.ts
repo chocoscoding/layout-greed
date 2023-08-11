@@ -1,8 +1,8 @@
 export interface ColumnsProps {
   //amount of columns
   count?: number;
-  //width of each columns
-  width?: number;
+  //height of each columns
+  height?: number;
   //space between columns
   gutter?: number;
   //color
@@ -10,7 +10,7 @@ export interface ColumnsProps {
   //offset from the edge
   offset?: number;
   //type of columns
-  columnsType: 'stretch' | 'top' | 'bottom' | 'center';
+  columnstype: 'stretch' | 'top' | 'bottom' | 'center';
 }
 
 export type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse';

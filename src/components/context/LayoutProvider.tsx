@@ -14,14 +14,18 @@ const LayoutContext = createContext<LayoutContextType>({
   setColor: () => {},
   gutter: 20,
   setGutter: () => {},
+  count: 20,
+  setCount: () => {},
   offset: 20,
   setOffset: () => {},
   width: 20,
   setWidth: () => {},
-  columnsType: 'stretch',
-  setColumnsType: () => {},
-  rowsType: 'stretch',
-  setRowsType: () => {},
+  height: 20,
+  setHeight: () => {},
+  columnstype: 'stretch',
+  setcolumnstype: () => {},
+  rowstype: 'stretch',
+  setrowstype: () => {},
 });
 
 export const LayoutProvider: FC<LayoutContextProviderType> = ({
@@ -38,16 +42,18 @@ export const LayoutProvider: FC<LayoutContextProviderType> = ({
   );
 
   const [gutter, setGutter] = useState<LayoutContextType['gutter']>(20);
+  const [count, setCount] = useState<LayoutContextType['count']>(10);
 
   const [offset, setOffset] = useState<LayoutContextType['offset']>(20);
 
   const [width, setWidth] = useState<LayoutContextType['width']>(20);
+  const [height, setHeight] = useState<LayoutContextType['width']>(20);
 
-  const [columnsType, setColumnsType] =
-    useState<LayoutContextType['columnsType']>('stretch');
+  const [columnstype, setcolumnstype] =
+    useState<LayoutContextType['columnstype']>('stretch');
 
-  const [rowsType, setRowsType] =
-    useState<LayoutContextType['rowsType']>('stretch');
+  const [rowstype, setrowstype] =
+    useState<LayoutContextType['rowstype']>('stretch');
 
   const contextValue: LayoutContextType = {
     LayoutType: layoutType,
@@ -56,16 +62,20 @@ export const LayoutProvider: FC<LayoutContextProviderType> = ({
     setSize,
     color,
     setColor,
+    setCount,
+    count,
     gutter,
     setGutter,
     offset,
     setOffset,
     width,
     setWidth,
-    columnsType,
-    setColumnsType,
-    rowsType,
-    setRowsType,
+    height,
+    setHeight,
+    columnstype,
+    setcolumnstype,
+    rowstype,
+    setrowstype,
   };
   const finalContextValue: LayoutContextType = {
     ...contextValue,

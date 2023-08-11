@@ -11,5 +11,5 @@ export interface RowsProps {
   //offset from the edge
   offset?: number;
   //type of rows
-  rowsType: 'stretch' | 'left' | 'right' | 'center';
+  rowstype: 'stretch' | 'left' | 'right' | 'center';
 }

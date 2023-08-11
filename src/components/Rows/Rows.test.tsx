@@ -2,14 +2,14 @@ import { render, screen } from '@testing-library/react';
 
 import Rows from './Rows';
 import { LayoutProviderTestComponent } from '../context/LayoutProviderTestComponent';
-
+import 'jest-styled-components';
 describe('rows', () => {
   it('renders without crashing', () => {
-    render(LayoutProviderTestComponent(<Rows />, { rowsType: 'stretch' }));
+    render(LayoutProviderTestComponent(<Rows />, { rowstype: 'stretch' }));
     expect(screen.getByTestId('rowsCont')).toBeInTheDocument();
   });
   test('count matches and is the right amount', () => {
-    render(LayoutProviderTestComponent(<Rows />, { rowsType: 'stretch' }));
+    render(LayoutProviderTestComponent(<Rows />, { rowstype: 'stretch' }));
     const mainContainer = screen.getByTestId('rowsCont');
     const rowsFirstChild = mainContainer.firstChild;
     const rowsLastChild = mainContainer.lastChild;
@@ -21,77 +21,69 @@ describe('rows', () => {
     render(
       LayoutProviderTestComponent(<Rows />, {
         color: '#2200ff',
-        rowsType: 'stretch',
+        rowstype: 'stretch',
       })
     );
     const rowsChild = screen.getByTestId('rowsCont').firstChild;
-    //expect rowChild to have styles of backgroundColor '#2200ff'
-    expect(rowsChild).toHaveStyle({ backgroundColor: '#2200ff' });
+    expect(rowsChild).toHaveStyleRule('background-color', '#2200ff');
   });
+
   test('direction left correct', () => {
-    render(LayoutProviderTestComponent(<Rows />, { rowsType: 'left' }));
+    render(LayoutProviderTestComponent(<Rows />, { rowstype: 'left' }));
     const mainContainer = screen.getByTestId('rowsCont');
     expect(mainContainer).toBeInTheDocument();
-    expect(mainContainer).toHaveStyle({ flexDirection: 'row' });
+    expect(mainContainer).toHaveStyleRule('flex-direction', 'row');
   });
+
   test('direction right correct', () => {
-    render(LayoutProviderTestComponent(<Rows />, { rowsType: 'right' }));
+    render(LayoutProviderTestComponent(<Rows />, { rowstype: 'right' }));
     const mainContainer = screen.getByTestId('rowsCont');
     expect(mainContainer).toBeInTheDocument();
-    expect(mainContainer).toHaveStyle({ flexDirection: 'row-reverse' });
+    expect(mainContainer).toHaveStyleRule('flex-direction', 'row-reverse');
   });
+
   test('no offset on center', () => {
     render(
-      LayoutProviderTestComponent(<Rows />, { rowsType: 'stretch', offset: 10 })
+      LayoutProviderTestComponent(<Rows />, { rowstype: 'stretch', offset: 10 })
     );
     const rowsFirstChild = screen.getByTestId('rowsCont').firstChild;
     const rowsLastChild = screen.getByTestId('rowsCont').lastChild;
     expect(rowsFirstChild).toBeInTheDocument();
     expect(rowsLastChild).toBeInTheDocument();
-    expect(rowsFirstChild).not.toHaveStyle({ marginLeft: '10px' });
-    expect(rowsLastChild).not.toHaveStyle({ marginRight: '10px' });
+    expect(rowsFirstChild).not.toHaveStyleRule('margin-left', '10px');
+    expect(rowsLastChild).not.toHaveStyleRule('margin-right', '10px');
   });
-  test('no offset on stretch', () => {
-    render(
-      LayoutProviderTestComponent(<Rows />, { rowsType: 'stretch', offset: 10 })
-    );
-    const rowsFirstChild = screen.getByTestId('rowsCont').firstChild;
-    const rowsLastChild = screen.getByTestId('rowsCont').lastChild;
-    expect(rowsFirstChild).toBeInTheDocument();
-    expect(rowsLastChild).toBeInTheDocument();
-    expect(rowsFirstChild).not.toHaveStyle({ marginLeft: '10px' });
-    expect(rowsLastChild).not.toHaveStyle({ marginRight: '10px' });
-  });
+
   test('offset on left', () => {
     render(
-      LayoutProviderTestComponent(<Rows />, { rowsType: 'right', offset: 10 })
+      LayoutProviderTestComponent(<Rows />, { rowstype: 'right', offset: 10 })
     );
     const rowsChild = screen.getByTestId('rowsCont').firstChild;
-
-    expect(rowsChild).toHaveStyle({ marginRight: '10px' });
+    expect(rowsChild).toHaveStyleRule('margin-right', '10px');
   });
+
   test('offset on right', () => {
     render(
-      LayoutProviderTestComponent(<Rows />, { rowsType: 'left', offset: 10 })
+      LayoutProviderTestComponent(<Rows />, { rowstype: 'left', offset: 10 })
     );
     const rowsChild = screen.getByTestId('rowsCont').firstChild;
-
-    expect(rowsChild).toHaveStyle({ marginLeft: '10px' });
+    expect(rowsChild).toHaveStyleRule('margin-left', '10px');
   });
+
   test('proper width', () => {
     render(
-      LayoutProviderTestComponent(<Rows />, { rowsType: 'center', width: 200 })
+      LayoutProviderTestComponent(<Rows />, { rowstype: 'center', width: 200 })
     );
     const rowsChild = screen.getByTestId('rowsCont').firstChild;
-
-    expect(rowsChild).toHaveStyle({ width: '200px' });
+    expect(rowsChild).toHaveStyleRule('width', '200px');
   });
+
   test('proper gutter', () => {
     render(
-      LayoutProviderTestComponent(<Rows />, { rowsType: 'stretch', gutter: 20 })
+      LayoutProviderTestComponent(<Rows />, { rowstype: 'stretch', gutter: 20 })
     );
     const mainContainer = screen.getByTestId('rowsCont');
     expect(mainContainer).toBeInTheDocument();
-    expect(mainContainer).toHaveStyle({ columnGap: '20px' });
+    expect(mainContainer).toHaveStyleRule('column-gap', '20px');
   });
 });
