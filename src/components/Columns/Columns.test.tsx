@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react';
 
 import Columns from './Columns';
 import { LayoutProviderTestComponent } from '../context/LayoutProviderTestComponent';
-import 'jest-styled-components';
 
 describe('columns', () => {
   it('renders without crashing', () => {
@@ -23,7 +22,7 @@ describe('columns', () => {
     const mainContainer = screen.getByTestId('columnsCont');
     const columnsFirstChild = mainContainer.firstChild;
     const columnsLastChild = mainContainer.lastChild;
-    expect(mainContainer.childElementCount).toBe(10);
+    expect(mainContainer.childElementCount).toBe(12);
     expect(columnsFirstChild).toBeInTheDocument();
     expect(columnsLastChild).toBeInTheDocument();
   });
@@ -36,7 +35,8 @@ describe('columns', () => {
       })
     );
     const columnsChild = screen.getByTestId('columnsCont').firstChild;
-    expect(columnsChild).toHaveStyleRule('background-color', '#2200ff');
+    //expect rowChild to have styles of backgroundColor '#2200ff'
+    expect(columnsChild).toHaveStyle({ backgroundColor: '#2200ff' });
   });
 
   test('direction top correct', () => {
@@ -47,7 +47,7 @@ describe('columns', () => {
     );
     const mainContainer = screen.getByTestId('columnsCont');
     expect(mainContainer).toBeInTheDocument();
-    expect(mainContainer).toHaveStyleRule('flex-direction', 'column');
+    expect(mainContainer).toHaveStyle({ flexDirection: 'column' });
   });
 
   test('direction bottom correct', () => {
@@ -58,7 +58,7 @@ describe('columns', () => {
     );
     const mainContainer = screen.getByTestId('columnsCont');
     expect(mainContainer).toBeInTheDocument();
-    expect(mainContainer).toHaveStyleRule('flex-direction', 'column-reverse');
+    expect(mainContainer).toHaveStyle({ flexDirection: 'column-reverse' });
   });
 
   test('no offset on center', () => {
@@ -72,8 +72,23 @@ describe('columns', () => {
     const columnsLastChild = screen.getByTestId('columnsCont').lastChild;
     expect(columnsFirstChild).toBeInTheDocument();
     expect(columnsLastChild).toBeInTheDocument();
-    expect(columnsFirstChild).not.toHaveStyleRule('margin-top', '10px');
-    expect(columnsLastChild).not.toHaveStyleRule('margin-bottom', '10px');
+    expect(columnsFirstChild).not.toHaveStyle({ marginTop: '10px' });
+    expect(columnsLastChild).not.toHaveStyle({ marginBottom: '10px' });
+  });
+
+  test('no offset on stretch', () => {
+    render(
+      LayoutProviderTestComponent(<Columns />, {
+        columnstype: 'stretch',
+        offset: 10,
+      })
+    );
+    const columnsFirstChild = screen.getByTestId('columnsCont').firstChild;
+    const columnsLastChild = screen.getByTestId('columnsCont').lastChild;
+    expect(columnsFirstChild).toBeInTheDocument();
+    expect(columnsLastChild).toBeInTheDocument();
+    expect(columnsFirstChild).not.toHaveStyle({ marginTop: '10px' });
+    expect(columnsLastChild).not.toHaveStyle({ marginBottom: '10px' });
   });
 
   test('offset on bottom', () => {
@@ -84,7 +99,8 @@ describe('columns', () => {
       })
     );
     const columnsChild = screen.getByTestId('columnsCont').firstChild;
-    expect(columnsChild).toHaveStyleRule('margin-bottom', '10px');
+
+    expect(columnsChild).toHaveStyle({ marginBottom: '10px' });
   });
 
   test('offset on top', () => {
@@ -95,18 +111,20 @@ describe('columns', () => {
       })
     );
     const columnsChild = screen.getByTestId('columnsCont').firstChild;
-    expect(columnsChild).toHaveStyleRule('margin-top', '10px');
+
+    expect(columnsChild).toHaveStyle({ marginTop: '10px' });
   });
 
   test('proper height', () => {
     render(
       LayoutProviderTestComponent(<Columns />, {
         columnstype: 'center',
-        height: 200,
+        width: 200,
       })
     );
     const columnsChild = screen.getByTestId('columnsCont').firstChild;
-    expect(columnsChild).toHaveStyleRule('height', '200px');
+
+    expect(columnsChild).toHaveStyle({ height: '200px' });
   });
 
   test('proper gutter', () => {
@@ -118,6 +136,6 @@ describe('columns', () => {
     );
     const mainContainer = screen.getByTestId('columnsCont');
     expect(mainContainer).toBeInTheDocument();
-    expect(mainContainer).toHaveStyleRule('row-gap', '20px');
+    expect(mainContainer).toHaveStyle({ rowGap: '20px' });
   });
 });

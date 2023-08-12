@@ -1,4 +1,6 @@
 import React from 'react';
+
+import { LayoutProvider } from './context/LayoutProvider';
 const styles: React.CSSProperties = {
   display: 'flex',
   width: '100vw',
@@ -13,9 +15,11 @@ const styles: React.CSSProperties = {
 };
 const StoryLayout = ({ children }: { children: any }) => {
   return (
-    <div style={styles} data-testid="layout">
-      {children}
-    </div>
+    <LayoutProvider>
+      <div style={styles} data-testid="layout">
+        {children}
+      </div>
+    </LayoutProvider>
   );
 };
 

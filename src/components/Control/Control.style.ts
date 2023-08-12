@@ -18,7 +18,7 @@ export const TypeContainer = styled.section`
   justify-content: space-between;
   align-items: center;
   padding-bottom: 8px;
-  border-bottom: 1px solid #ffffff15;
+  border-bottom: 1px solid #ffffff10;
 `;
 
 export const TypeSelector = styled.select`
@@ -30,7 +30,7 @@ export const TypeSelector = styled.select`
   border-radius: 4px;
   border: none;
   &:hover {
-    outline: 1px solid #ffffff15;
+    outline: 1px solid #ffffff10;
   }
 `;
 
@@ -57,7 +57,7 @@ min-width: 50px;
 color: white;
 border:none;
 &:hover{
-    outline: 1px solid #ffffff15;
+    outline: 1px solid #ffffff10;
 }
 padding-left: 5px;
   &:disabled {

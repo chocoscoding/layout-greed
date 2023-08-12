@@ -38,11 +38,11 @@ export const LayoutProvider: FC<LayoutContextProviderType> = ({
   const [size, setSize] = useState<LayoutContextType['size']>(20);
 
   const [color, setColor] = useState<LayoutContextType['color']>(
-    'rgba(250, 15, 15, 0.2)'
+    'rgba(250, 15, 15, 0.1)'
   );
 
   const [gutter, setGutter] = useState<LayoutContextType['gutter']>(20);
-  const [count, setCount] = useState<LayoutContextType['count']>(10);
+  const [count, setCount] = useState<LayoutContextType['count']>(12);
 
   const [offset, setOffset] = useState<LayoutContextType['offset']>(20);
 

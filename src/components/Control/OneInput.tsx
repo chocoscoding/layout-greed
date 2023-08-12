@@ -1,18 +1,22 @@
-import { ReactNode, FC } from 'react';
-
-import { OneInputContainer, PTag } from './Control.style';
-
+import { ReactNode, FC, CSSProperties } from 'react';
 interface OneInputType {
   label: string;
   children: ReactNode;
 }
-
 const OneInput: FC<OneInputType> = ({ label, children }) => {
+  const oneInputStyle: CSSProperties = {
+    minWidth: '50px',
+  };
+  const pTag: CSSProperties = {
+    color: 'white',
+    margin: '0 0 5px 0 ',
+    textAlign: 'left',
+  };
   return (
-    <OneInputContainer>
-      <PTag>{label}</PTag>
+    <div style={oneInputStyle}>
+      <p style={pTag}>{label}</p>
       {children}
-    </OneInputContainer>
+    </div>
   );
 };
 

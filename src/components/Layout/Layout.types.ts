@@ -25,4 +25,5 @@ export interface SecondarySettings {
 }
 export interface LayoutProps {
   color?: string;
+  customKeyBinding?: string;
 }
