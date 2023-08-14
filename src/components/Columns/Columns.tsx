@@ -8,7 +8,7 @@ const Columns = () => {
     columnstype = 'stretch',
     count = 10,
     offset = 0,
-    width: height = 50,
+    height = 50,
     gutter = 10,
     color = 'ff00003b',
   } = useContext(LayoutContext);

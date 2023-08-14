@@ -119,7 +119,7 @@ describe('columns', () => {
     render(
       LayoutProviderTestComponent(<Columns />, {
         columnstype: 'center',
-        width: 200,
+        height: 200,
       })
     );
     const columnsChild = screen.getByTestId('columnsCont').firstChild;
