@@ -16,12 +16,12 @@ const styles: React.CSSProperties = {
   outline: '10px solid pink',
 };
 export const Layout = ({
-  disable,
+  hide,
   color,
   customKeyBinding,
   ...props
 }: LayoutProps) => {
-  if (disable) return null;
+  if (hide) return null;
   return (
     <LayoutProvider>
       <div style={styles} {...props} data-testid="layout">

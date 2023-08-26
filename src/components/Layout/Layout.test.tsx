@@ -12,7 +12,7 @@ describe('Layout', () => {
     expect(element).toBeInTheDocument();
   });
   test('check if element does not exist on disable', async () => {
-    render(<Layout color="#fff" disable={true} />);
+    render(<Layout color="#fff" hide={true} />);
     const element = screen.queryByTestId('layout');
     expect(element).not.toBeInTheDocument();
   });
