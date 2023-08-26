@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useContext, useState } from 'react';
-
 import type { LayoutProps } from './Layout.types';
 import { LayoutMain } from './LayoutMain';
 import Control from '../Control/Control';
