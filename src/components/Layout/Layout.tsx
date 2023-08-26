@@ -15,7 +15,13 @@ const styles: React.CSSProperties = {
   pointerEvents: 'none',
   outline: '10px solid pink',
 };
-export const Layout = ({ color, customKeyBinding, ...props }: LayoutProps) => {
+export const Layout = ({
+  disable,
+  color,
+  customKeyBinding,
+  ...props
+}: LayoutProps) => {
+  if (disable) return null;
   return (
     <LayoutProvider>
       <div style={styles} {...props} data-testid="layout">

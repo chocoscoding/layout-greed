@@ -11,4 +11,9 @@ describe('Layout', () => {
 
     expect(element).toBeInTheDocument();
   });
+  test('check if element does not exist on disable', async () => {
+    render(<Layout color="#fff" disable={true} />);
+    const element = screen.queryByTestId('layout');
+    expect(element).not.toBeInTheDocument();
+  });
 });

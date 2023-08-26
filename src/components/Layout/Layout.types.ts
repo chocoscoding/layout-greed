@@ -24,6 +24,7 @@ export interface SecondarySettings {
   columnstype: ColumnType;
 }
 export interface LayoutProps {
+  disable?: boolean;
   color?: string;
   customKeyBinding?: string;
 }
