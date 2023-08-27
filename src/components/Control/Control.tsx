@@ -59,7 +59,7 @@ const Control: FC<ControlsPropsType> = ({ customKeyBinding }) => {
     maxHeight: '300px',
     position: 'absolute',
     top: '7px',
-    right: '7px',
+    right: '20px',
     borderRadius: '5px',
     backgroundColor: '#222425',
     padding: '8px',
@@ -141,7 +141,7 @@ const Control: FC<ControlsPropsType> = ({ customKeyBinding }) => {
       </div>
 
       {/* first row */}
-      <div style={controlLineStyles}>
+      <div style={{ ...controlLineStyles, gap: '20px' }}>
         {LayoutType === 'Grid' ? (
           <OneInput label="Size">
             <input
@@ -157,7 +157,7 @@ const Control: FC<ControlsPropsType> = ({ customKeyBinding }) => {
           <OneInput label="Count">
             <input
               className="inputStyle"
-              style={textInputStyles}
+              style={{ ...textInputStyles, width: '100%' }}
               type="number"
               value={count}
               onChange={(e) => setCount(~~e.target.value)}

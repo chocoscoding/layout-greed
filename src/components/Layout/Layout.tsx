@@ -9,9 +9,10 @@ const styles: React.CSSProperties = {
   backgroundColor: 'transparent',
   margin: '0',
   overflow: 'hidden',
-  position: 'absolute',
+  position: 'fixed',
   top: '0px',
   left: '0px',
+  zIndex: 999999999999,
   pointerEvents: 'none',
   outline: '10px solid pink',
 };
