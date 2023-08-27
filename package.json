@@ -1,6 +1,6 @@
 {
   "name": "layout-greed",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "description": "Layout guidelines for your frontend projects. (Inspired by Figma)",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -66,6 +66,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
+  "files": [
+    "./dist",
+    "./README.md"
+  ],
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
