@@ -21,7 +21,7 @@ export const Layout = ({
   customKeyBinding,
   ...props
 }: LayoutProps) => {
-  if (hide) return null;
+  if (hide) return <></>;
   return (
     <LayoutProvider>
       <div style={styles} {...props} data-testid="layout">
