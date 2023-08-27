@@ -42,6 +42,17 @@ const Control: FC<ControlsPropsType> = ({ customKeyBinding }) => {
     }
     if (LayoutType === 'Grid') return false;
   };
+  const disableOffsetForWidth = () => {
+    if (LayoutType === 'Columns') {
+      if (columnstype === 'stretch') return true;
+      return false;
+    }
+    if (LayoutType === 'Rows') {
+      if (rowstype === 'stretch') return true;
+      return false;
+    }
+    return false;
+  };
   const iconStyle: CSSProperties = {
     color: 'white',
     border: 'none',
@@ -57,7 +68,7 @@ const Control: FC<ControlsPropsType> = ({ customKeyBinding }) => {
     maxWidth: '300px',
     height: 'fit-content',
     maxHeight: '300px',
-    position: 'absolute',
+    position: 'fixed',
     top: '7px',
     right: '20px',
     borderRadius: '5px',
@@ -119,147 +130,157 @@ const Control: FC<ControlsPropsType> = ({ customKeyBinding }) => {
     maxWidth: '87px',
     ...(disableOffset() ? { opacity: '50%' } : {}),
   };
+  const textInput4Styles: React.CSSProperties = {
+    ...sharedTextInputStyles,
+    maxWidth: '87px',
+    ...(disableOffsetForWidth() ? { opacity: '50%' } : {}),
+  };
 
   if (!show) return null;
   return (
-    <section style={mainContainerStyles} data-testid="controlsContainer">
-      <div style={typeContainerStyles}>
-        <select
-          style={typeSelectorStyles}
-          name=""
-          id=""
-          value={LayoutType}
-          onChange={(e) => setLayoutType(e.target.value as typeof LayoutType)}>
-          <option value="Grid">Grid</option>
-          <option value="Rows">Rows</option>
-          <option value="Columns">Columns</option>
-        </select>
-
-        <span onClick={() => setShow(false)}>
-          <CloseIcon style={iconStyle} />
-        </span>
-      </div>
-
-      {/* first row */}
-      <div style={{ ...controlLineStyles, gap: '20px' }}>
-        {LayoutType === 'Grid' ? (
-          <OneInput label="Size">
-            <input
-              className="inputStyle"
-              style={textInputStyles}
-              type="number"
-              value={size}
-              onChange={(e) => setSize(~~e.target.value)}
-            />
-          </OneInput>
-        ) : null}
-        {LayoutType !== 'Grid' ? (
-          <OneInput label="Count">
-            <input
-              className="inputStyle"
-              style={{ ...textInputStyles, width: '100%' }}
-              type="number"
-              value={count}
-              onChange={(e) => setCount(~~e.target.value)}
-            />
-          </OneInput>
-        ) : null}
-        <OneInput label="Color">
-          <input
-            className="inputStyle"
-            style={textInput2Styles}
-            type="text"
-            onChange={(e) => setColor(e.target.value)}
-            value={color}
-          />
-        </OneInput>
-      </div>
-
-      {/* .................. */}
-      {LayoutType !== 'Grid' ? (
-        <>
-          <div style={controlLineStyles}>
-            {LayoutType === 'Rows' ? (
-              <OneInput label="Type">
-                <select
-                  style={typeSelectorStyles}
-                  name=""
-                  id=""
-                  value={rowstype}
-                  onChange={(e) =>
-                    setrowstype(e.target.value as typeof rowstype)
-                  }>
-                  <option value="stretch">stretch</option>
-                  <option value="left">left</option>
-                  <option value="right">right</option>
-                  <option value="center">center</option>
-                </select>
-              </OneInput>
-            ) : null}
-            {LayoutType === 'Columns' ? (
-              <OneInput label="Type">
-                <select
-                  style={typeSelectorStyles}
-                  name=""
-                  id=""
-                  value={columnstype}
-                  onChange={(e) =>
-                    setcolumnstype(e.target.value as typeof columnstype)
-                  }>
-                  <option value="stretch">stretch</option>
-                  <option value="top">top</option>
-                  <option value="bottom">bottom</option>
-                  <option value="center">center</option>
-                </select>
-              </OneInput>
-            ) : null}
-            {LayoutType === 'Columns' ? (
-              <OneInput label="Height">
-                <input
-                  className="inputStyle"
-                  style={textInputStyles}
-                  type="number"
-                  value={height}
-                  onChange={(e) => setHeight(~~e.target.value)}
-                />
-              </OneInput>
-            ) : null}
-            {LayoutType === 'Rows' ? (
-              <OneInput label="Width">
-                <input
-                  className="inputStyle"
-                  style={textInputStyles}
-                  type="number"
-                  value={width}
-                  onChange={(e) => setWidth(~~e.target.value)}
-                />
-              </OneInput>
-            ) : null}
-            <OneInput label="Offset">
-              <input
-                className="inputStyle"
-                style={textInput3Styles}
-                disabled={disableOffset()}
-                type="number"
-                value={offset}
-                onChange={(e) => setOffset(~~e.target.value)}
-              />
-            </OneInput>
-          </div>
-          <div style={controlLineStyles}>
-            <OneInput label="Gutter">
+    <>
+      <section
+        className="ba"
+        style={mainContainerStyles}
+        data-testid="controlsContainer">
+        <div style={typeContainerStyles}>
+          <select
+            style={typeSelectorStyles}
+            name=""
+            id=""
+            value={LayoutType}
+            onChange={(e) =>
+              setLayoutType(e.target.value as typeof LayoutType)
+            }>
+            <option value="Grid">Grid</option>
+            <option value="Rows">Rows</option>
+            <option value="Columns">Columns</option>
+          </select>
+          <span onClick={() => setShow(false)}>
+            <CloseIcon style={iconStyle} />
+          </span>
+        </div>
+        {/* first row */}
+        <div style={{ ...controlLineStyles, gap: '20px' }}>
+          {LayoutType === 'Grid' ? (
+            <OneInput label="Size">
               <input
                 className="inputStyle"
                 style={textInputStyles}
                 type="number"
-                value={gutter}
-                onChange={(e) => setGutter(~~e.target.value)}
+                value={size}
+                onChange={(e) => setSize(~~e.target.value)}
               />
             </OneInput>
-          </div>
-        </>
-      ) : null}
-    </section>
+          ) : null}
+          {LayoutType !== 'Grid' ? (
+            <OneInput label="Count">
+              <input
+                className="inputStyle"
+                style={{ ...textInputStyles, width: '100%' }}
+                type="number"
+                value={count}
+                onChange={(e) => setCount(~~e.target.value)}
+              />
+            </OneInput>
+          ) : null}
+          <OneInput label="Color">
+            <input
+              className="inputStyle"
+              style={textInput2Styles}
+              type="text"
+              onChange={(e) => setColor(e.target.value)}
+              value={color}
+            />
+          </OneInput>
+        </div>
+        {/* .................. */}
+        {LayoutType !== 'Grid' ? (
+          <>
+            <div style={controlLineStyles}>
+              {LayoutType === 'Rows' ? (
+                <OneInput label="Type">
+                  <select
+                    style={typeSelectorStyles}
+                    name=""
+                    id=""
+                    value={rowstype}
+                    onChange={(e) =>
+                      setrowstype(e.target.value as typeof rowstype)
+                    }>
+                    <option value="stretch">stretch</option>
+                    <option value="left">left</option>
+                    <option value="right">right</option>
+                    <option value="center">center</option>
+                  </select>
+                </OneInput>
+              ) : null}
+              {LayoutType === 'Columns' ? (
+                <OneInput label="Type">
+                  <select
+                    style={typeSelectorStyles}
+                    name=""
+                    id=""
+                    value={columnstype}
+                    onChange={(e) =>
+                      setcolumnstype(e.target.value as typeof columnstype)
+                    }>
+                    <option value="stretch">stretch</option>
+                    <option value="top">top</option>
+                    <option value="bottom">bottom</option>
+                    <option value="center">center</option>
+                  </select>
+                </OneInput>
+              ) : null}
+              {LayoutType === 'Columns' ? (
+                <OneInput label="Height">
+                  <input
+                    className="inputStyle"
+                    style={textInputStyles}
+                    type="number"
+                    value={height}
+                    onChange={(e) => setHeight(~~e.target.value)}
+                  />
+                </OneInput>
+              ) : null}
+              {LayoutType === 'Rows' ? (
+                <OneInput label="Width">
+                  <input
+                    className="inputStyle"
+                    style={textInput4Styles}
+                    disabled={disableOffsetForWidth()}
+                    type="number"
+                    value={width}
+                    onChange={(e) => setWidth(~~e.target.value)}
+                  />
+                </OneInput>
+              ) : null}
+              <OneInput label="Offset">
+                <input
+                  className="inputStyle"
+                  style={textInput3Styles}
+                  disabled={disableOffset()}
+                  type="number"
+                  value={offset}
+                  onChange={(e) => setOffset(~~e.target.value)}
+                />
+              </OneInput>
+            </div>
+            <div style={controlLineStyles}>
+              <OneInput label="Gutter">
+                <input
+                  className="inputStyle"
+                  style={textInputStyles}
+                  type="number"
+                  value={gutter}
+                  onChange={(e) => setGutter(~~e.target.value)}
+                />
+              </OneInput>
+            </div>
+          </>
+        ) : null}
+      </section>
+    </>
   );
 };
 
