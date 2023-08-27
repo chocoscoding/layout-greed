@@ -187,7 +187,7 @@ const Control: FC<ControlsPropsType> = ({ customKeyBinding }) => {
           <OneInput label="Color">
             <input
               className="inputStyle"
-              style={textInput2Styles}
+              style={{ ...textInput2Styles, width: '100%' }}
               type="text"
               onChange={(e) => setColor(e.target.value)}
               value={color}
