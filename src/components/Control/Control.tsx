@@ -70,7 +70,7 @@ const Control: FC<ControlsPropsType> = ({ customKeyBinding }) => {
     maxHeight: '300px',
     position: 'fixed',
     top: '7px',
-    right: '20px',
+    right: '7px',
     borderRadius: '5px',
     backgroundColor: '#222425',
     padding: '8px',
