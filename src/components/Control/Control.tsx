@@ -30,7 +30,7 @@ const Control: FC<ControlsPropsType> = ({ customKeyBinding }) => {
     setrowstype,
   } = useContext(LayoutContext);
   const [show, setShow] = useState(true);
-  useHotkeys('shift+l' || customKeyBinding, () => setShow(!show), [show]);
+  useHotkeys(customKeyBinding || 'shift+l', () => setShow(!show), [show]);
   const disableOffset = () => {
     if (LayoutType === 'Columns') {
       if (columnstype === 'stretch' || columnstype === 'center') return true;
