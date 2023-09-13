@@ -10,6 +10,14 @@ For npm users - `npm install layout-greed`
 For yarn users - `yarn install layout-greed`
 
 # Demo
+ ### Grids
+![Example Image](https://res.cloudinary.com/chocoscoding/image/upload/v1694645658/Web_capture_13-9-2023_234458_localhost_p9erja.jpg)
+ ### Rows
+![Example Image](https://res.cloudinary.com/chocoscoding/image/upload/v1694645657/Web_capture_13-9-2023_234614_localhost_y9gi6x.jpg)
+ ### Columns
+![Example Image](https://res.cloudinary.com/chocoscoding/image/upload/v1694645658/Web_capture_13-9-2023_234636_localhost_pc6zkk.jpg)
+
+
 [![Edit strange-currying-48g5tr](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/strange-currying-48g5tr?fontsize=14&hidenavigation=1&theme=dark)
 
 # How to use
