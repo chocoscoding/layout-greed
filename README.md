@@ -17,6 +17,9 @@ For yarn users - `yarn install layout-greed`
  ### Columns
 ![Example Image](https://res.cloudinary.com/chocoscoding/image/upload/v1694645658/Web_capture_13-9-2023_234636_localhost_pc6zkk.jpg)
 
+[Demo video](https://res.cloudinary.com/chocoscoding/video/upload/v1694686302/Untitled_1_wvxzdx.mp4)
+
+
 
 [![Edit strange-currying-48g5tr](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/strange-currying-48g5tr?fontsize=14&hidenavigation=1&theme=dark)
 
