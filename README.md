@@ -23,6 +23,9 @@ For yarn users - `yarn install layout-greed`
 
 [![Edit strange-currying-48g5tr](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/strange-currying-48g5tr?fontsize=14&hidenavigation=1&theme=dark)
 
+# Usability Notice
+ > use (shift+l) to hide/show the layout grid control 
+
 # How to use
 
 - For normal use
